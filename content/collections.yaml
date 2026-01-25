@@ -1,0 +1,32 @@
+collections:
+  - category: "LCF Year 1"
+    items:
+      - id: lcf-one-ptct
+        title: "Product Technology, Creative Techniques"
+      - id: lcf-one-cpd
+        title: "Creative Product Development"
+
+  - category: "LCF Year 2"
+    items:
+      - id: lcf-two-ppi
+        title: "Professional Practice Initiation"
+      - id: lcf-two-isp
+        title: "Industry Specialised Project"
+
+  - category: "LCF Year 3"
+    items:
+      - id: lcf-three
+        title: "Draping the Light"
+        looks:
+          - id: look-1
+            subtitle: "Look 1 \"The Sculpture\""
+          - id: look-2
+            subtitle: "Look 2 \"The Shadow\""
+          - id: look-3
+            subtitle: "Look 3 \"The Light\""
+
+  - id: fara-x-lcf
+    title: "FARA X LCF"
+
+  - id: end-of-the-world
+    title: "End of the World"

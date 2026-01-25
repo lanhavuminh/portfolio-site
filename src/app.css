@@ -1,0 +1,14 @@
+@import 'tailwindcss';
+
+* {
+  font-family: didot, serif;
+}
+
+.lhvm {
+  font-family: bodoni, serif;
+  font-size: 50px;
+}
+
+.nav-text {
+  font-family: bodoni, serif;
+}
