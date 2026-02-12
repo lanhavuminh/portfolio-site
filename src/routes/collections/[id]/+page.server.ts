@@ -1,6 +1,21 @@
-import { loadCollectionPageData } from '$lib/server/collections';
+import { loadCollectionPageData, loadCollectionsData } from '$lib/server/collections';
 import { error } from '@sveltejs/kit';
-import type { PageServerLoad } from './$types';
+import type { EntryGenerator, PageServerLoad } from './$types';
+
+export const entries: EntryGenerator = () => {
+  const data = loadCollectionsData();
+  const ids: { id: string }[] = [];
+  for (const collection of data.collections) {
+    if ('category' in collection) {
+      for (const item of collection.items) {
+        ids.push({ id: item.id });
+      }
+    } else {
+      ids.push({ id: collection.id });
+    }
+  }
+  return ids;
+};
 
 export const load: PageServerLoad = ({ params }) => {
   try {

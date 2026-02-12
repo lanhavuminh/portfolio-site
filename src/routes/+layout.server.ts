@@ -1,3 +1,5 @@
+export const prerender = true;
+
 import type { LayoutServerLoad } from './$types';
 import { loadContactData } from '$lib/server/contact';
 import { loadCollectionsData } from '$lib/server/collections';
