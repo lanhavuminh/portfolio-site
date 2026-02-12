@@ -7,5 +7,5 @@
 </script>
 
 <div class="mb-8">
-  <p class="text-gray-700 leading-relaxed">{text}</p>
+  <p class="text-lg leading-relaxed">{text}</p>
 </div>

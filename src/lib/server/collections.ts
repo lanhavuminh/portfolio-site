@@ -2,7 +2,7 @@ import { readFileSync, readdirSync } from 'fs';
 import yaml from 'js-yaml';
 import { join } from 'path';
 
-interface Look {
+interface Section {
   id: string;
   subtitle: string;
 }
@@ -10,7 +10,7 @@ interface Look {
 interface CollectionItem {
   id: string;
   title: string;
-  looks?: Look[];
+  sections?: Section[];
 }
 
 interface CollectionCategory {
@@ -49,7 +49,7 @@ export function findCollectionById(id: string): CollectionItem | null {
   return null;
 }
 
-interface LookData {
+interface SectionData {
   id: string;
   subtitle: string;
   description: string;
@@ -72,54 +72,54 @@ export function loadCollectionPageData(id: string) {
     // Description file doesn't exist or is empty
   }
 
-  // Check if collection has looks
-  if (collection.looks && collection.looks.length > 0) {
-    const looks: LookData[] = collection.looks.map(look => {
-      const lookDescriptionFile = `collections/${id}/${look.id}.txt`;
-      const lookImagesPath = `/images/${id}/${look.id}`;
+  // Check if collection has sections
+  if (collection.sections && collection.sections.length > 0) {
+    const sections: SectionData[] = collection.sections.map(section => {
+      const sectionDescriptionFile = `collections/${id}/${section.id}.txt`;
+      const sectionImagesPath = `/media/${id}/${section.id}`;
 
-      // Load look description
-      let lookDescription = '';
+      // Load section description
+      let sectionDescription = '';
       try {
-        lookDescription = readFileSync(join('content', lookDescriptionFile), 'utf-8').trim();
+        sectionDescription = readFileSync(join('content', sectionDescriptionFile), 'utf-8').trim();
       } catch (e) {
         // Description file doesn't exist or is empty
       }
 
-      // Load look images
-      const lookStaticPath = join('static', lookImagesPath);
-      let lookImages: string[] = [];
+      // Load section images
+      const sectionStaticPath = join('static', sectionImagesPath);
+      let sectionImages: string[] = [];
       try {
-        lookImages = readdirSync(lookStaticPath)
-          .filter(file => /\.(jpg|jpeg|png|gif|webp)$/i.test(file))
-          .sort();
+        sectionImages = readdirSync(sectionStaticPath)
+          .filter(file => /\.(jpg|jpeg|png|gif|webp|mp4)$/i.test(file))
+          .sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'base' }));
       } catch (e) {
         // Images directory doesn't exist
       }
 
       return {
-        id: look.id,
-        subtitle: look.subtitle,
-        description: lookDescription,
-        images: lookImages,
-        basePath: lookImagesPath
+        id: section.id,
+        subtitle: section.subtitle,
+        description: sectionDescription,
+        images: sectionImages,
+        basePath: sectionImagesPath
       };
     });
 
     return {
       title: collection.title,
       description,
-      looks
+      sections
     };
   } else {
-    // No looks - load images directly from collection folder
-    const imagesPath = `/images/${id}`;
+    // No sections - load images directly from collection folder
+    const imagesPath = `/media/${id}`;
     const staticPath = join('static', imagesPath);
     let images: string[] = [];
     try {
       images = readdirSync(staticPath)
-        .filter(file => /\.(jpg|jpeg|png|gif|webp)$/i.test(file))
-        .sort();
+        .filter(file => /\.(jpg|jpeg|png|gif|webp|mp4)$/i.test(file))
+        .sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'base' }));
     } catch (e) {
       // Images directory doesn't exist
     }

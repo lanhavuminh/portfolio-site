@@ -34,17 +34,17 @@
 </script>
 
 
-<aside class="bg-[#fffef9] w-64 p-4">
+<aside class="bg-[var(--color-bg)] w-64 p-4">
   <nav class="space-y-2">
     <ul class="space-y-2">
       <li>
         <button
           onclick={() => collectionsOpen = !collectionsOpen}
-          class="nav-text w-full text-left text-gray-700 hover:text-gray-900 flex items-center justify-between"
+          class="nav-text w-full text-left text-lg hover:text-gray-900 flex items-center justify-between"
         >
           COLLECTIONS
           <svg
-            class="w-4 h-4 transition-transform duration-200 {collectionsOpen ? 'rotate-180' : ''}"
+            class="w-5 h-5 transition-transform duration-200 {collectionsOpen ? 'rotate-180' : ''}"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -59,11 +59,11 @@
                 <li>
                   <button
                     onclick={() => categoryStates[collection.category] = !categoryStates[collection.category]}
-                    class="nav-text w-full text-left text-sm text-gray-600 hover:text-gray-800 flex items-center justify-between"
+                    class="nav-text w-full text-left text-base hover:text-gray-900 flex items-center justify-between"
                   >
                     {collection.category}
                     <svg
-                      class="w-3 h-3 transition-transform duration-200 {categoryStates[collection.category] ? 'rotate-180' : ''}"
+                      class="w-4 h-4 transition-transform duration-200 {categoryStates[collection.category] ? 'rotate-180' : ''}"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -74,26 +74,26 @@
                   {#if categoryStates[collection.category]}
                     <ul class="ml-4 mt-1 space-y-1">
                       {#each collection.items as item}
-                        <li><a href="/collections/{item.id}" class="nav-text block text-xs {isActive('/collections/' + item.id) ? 'text-[#d4a5a5]' : 'text-gray-500 hover:text-gray-700'}">{item.title}</a></li>
+                        <li><a href="/collections/{item.id}" class="nav-text block text-sm {isActive('/collections/' + item.id) ? 'text-[var(--color-active)]' : 'hover:text-gray-900'}">{item.title}</a></li>
                       {/each}
                     </ul>
                   {/if}
                 </li>
               {:else}
-                <li><a href="/collections/{collection.id}" class="nav-text block text-sm {isActive('/collections/' + collection.id) ? 'text-[#d4a5a5]' : 'text-gray-600 hover:text-gray-800'}">{collection.title}</a></li>
+                <li><a href="/collections/{collection.id}" class="nav-text block text-base {isActive('/collections/' + collection.id) ? 'text-[var(--color-active)]' : 'hover:text-gray-900'}">{collection.title}</a></li>
               {/if}
             {/each}
           </ul>
         {/if}
       </li>
       <li>
-        <a href="/press" class="nav-text w-full text-left {isActive('/press') ? 'text-[#d4a5a5]' : 'text-gray-700 hover:text-gray-900'} flex items-center justify-between">PRESS</a>
+        <a href="/press" class="nav-text w-full text-left text-lg {isActive('/press') ? 'text-[var(--color-active)]' : 'hover:text-gray-900'} flex items-center justify-between">PRESS</a>
       </li>
       <li>
-        <a href="/about" class="nav-text w-full text-left {isActive('/about') ? 'text-[#d4a5a5]' : 'text-gray-700 hover:text-gray-900'} flex items-center justify-between">ABOUT</a>
+        <a href="/about" class="nav-text w-full text-left text-lg {isActive('/about') ? 'text-[var(--color-active)]' : 'hover:text-gray-900'} flex items-center justify-between">ABOUT</a>
       </li>
       <li>
-        <a href="/contact" class="nav-text w-full text-left {isActive('/contact') ? 'text-[#d4a5a5]' : 'text-gray-700 hover:text-gray-900'} flex items-center justify-between">CONTACT</a>
+        <a href="/contact" class="nav-text w-full text-left text-lg {isActive('/contact') ? 'text-[var(--color-active)]' : 'hover:text-gray-900'} flex items-center justify-between">CONTACT</a>
       </li>
     </ul>
   </nav>

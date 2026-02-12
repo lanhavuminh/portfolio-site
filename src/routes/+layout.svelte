@@ -8,7 +8,10 @@
 	let { children, data }: { children: any; data: LayoutData } = $props();
 </script>
 
-<div class="min-h-screen flex flex-col">
+<div
+	class="min-h-screen flex flex-col"
+	style="--color-text: {data.theme.textColor}; --color-active: {data.theme.activeColor}; --color-bg: {data.theme.backgroundColor};"
+>
 	<Header></Header>
 	<div class="flex flex-1">
   	<Sidebar collections={data.collections}></Sidebar>

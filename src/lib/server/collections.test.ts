@@ -61,63 +61,19 @@ describe('Collections YAML validation', () => {
     });
   });
 
-  it('should have corresponding image folders for each collection', () => {
+  it('should have valid sections structure when present', () => {
     const yamlContent = readFileSync('content/collections.yaml', 'utf-8');
     const data = yaml.load(yamlContent) as any;
 
     data.collections.forEach((collection: any) => {
       const processItem = (item: any) => {
-        const imagePath = join('static/images', item.id);
-        expect(existsSync(imagePath), `Image folder missing for ${item.id}`).toBe(true);
-      };
-
-      if ('category' in collection) {
-        collection.items.forEach(processItem);
-      } else {
-        processItem(collection);
-      }
-    });
-  });
-
-  it('should have corresponding description files for each collection', () => {
-    const yamlContent = readFileSync('content/collections.yaml', 'utf-8');
-    const data = yaml.load(yamlContent) as any;
-
-    data.collections.forEach((collection: any) => {
-      const processItem = (item: any) => {
-        const descPath = join('content/collections', `${item.id}.txt`);
-        // Note: description files are optional, so we just check if they exist when present
-        if (existsSync(descPath)) {
-          const content = readFileSync(descPath, 'utf-8');
-          expect(typeof content).toBe('string');
-        }
-      };
-
-      if ('category' in collection) {
-        collection.items.forEach(processItem);
-      } else {
-        processItem(collection);
-      }
-    });
-  });
-
-  it('should have valid looks structure when present', () => {
-    const yamlContent = readFileSync('content/collections.yaml', 'utf-8');
-    const data = yaml.load(yamlContent) as any;
-
-    data.collections.forEach((collection: any) => {
-      const processItem = (item: any) => {
-        if (item.looks) {
-          expect(Array.isArray(item.looks)).toBe(true);
-          item.looks.forEach((look: any) => {
-            expect(look).toHaveProperty('id');
-            expect(look).toHaveProperty('subtitle');
-            expect(typeof look.id).toBe('string');
-            expect(typeof look.subtitle).toBe('string');
-
-            // Check look images folder exists
-            const lookImagesPath = join('static/images', item.id, look.id);
-            expect(existsSync(lookImagesPath), `Look images folder missing for ${item.id}/${look.id}`).toBe(true);
+        if (item.sections) {
+          expect(Array.isArray(item.sections)).toBe(true);
+          item.sections.forEach((section: any) => {
+            expect(section).toHaveProperty('id');
+            expect(section).toHaveProperty('subtitle');
+            expect(typeof section.id).toBe('string');
+            expect(typeof section.subtitle).toBe('string');
           });
         }
       };

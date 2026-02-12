@@ -4,6 +4,10 @@
   font-family: didot, serif;
 }
 
+body {
+  color: var(--color-text);
+}
+
 .lhvm {
   font-family: bodoni, serif;
   font-size: 50px;

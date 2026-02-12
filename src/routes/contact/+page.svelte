@@ -9,11 +9,11 @@
 </script>
 
 <div class="flex flex-1">
-	<main class="bg-[#fffef9] flex-1 p-6">
-		<div class="flex items-center justify-center h-full gap-8">
+	<main class="bg-[var(--color-bg)] flex-1 p-6">
+		<div class="flex items-center justify-center h-full gap-16 -ml-48">
 			<div class="flex-1 flex items-center justify-end">
-				<div class="text-xl max-w-lg space-y-6">
-					<p class="text-sm text-gray-600 italic">{data.contact.note}</p>
+				<div class="text-3xl max-w-lg space-y-6">
+					<p class="text-lg italic">{data.contact.note}</p>
 					<div class="space-y-3">
 						<p>
 							<strong>Email:</strong>
@@ -28,8 +28,8 @@
 								rel="noopener noreferrer"
 								class="flex items-center gap-2 hover:text-gray-600 transition-colors"
 							>
-								<i class="fa-brands fa-instagram text-2xl"></i>
-								<span class="text-base">@{data.contact.instagram}</span>
+								<i class="fa-brands fa-instagram text-3xl"></i>
+								<span class="text-xl">@{data.contact.instagram}</span>
 							</a>
 							<a
 								href={data.contact.linkedin}
@@ -37,8 +37,8 @@
 								rel="noopener noreferrer"
 								class="flex items-center gap-2 hover:text-gray-600 transition-colors"
 							>
-								<i class="fa-brands fa-linkedin text-2xl"></i>
-								<span class="text-base">Lan Ha Vu Minh</span>
+								<i class="fa-brands fa-linkedin text-3xl"></i>
+								<span class="text-xl">Lan Ha Vu Minh</span>
 							</a>
 							<a
 								href={data.contact.ual}
@@ -46,15 +46,15 @@
 								rel="noopener noreferrer"
 								class="flex items-center gap-2 hover:text-gray-600 transition-colors"
 							>
-								<span class="text-2xl">ual</span>
-								<span class="text-base">showcase</span>
+								<span class="text-3xl">ual</span>
+								<span class="text-xl">showcase</span>
 							</a>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="flex-1">
-				<img src={data.contact.imageContact} alt="Lan Ha Vu Minh" class="max-w-full h-auto" />
+				<img src={data.contact.imageContact} alt="Lan Ha Vu Minh" class="max-w-md h-auto" />
 			</div>
 		</div>
 	</main>

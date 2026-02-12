@@ -7,28 +7,28 @@
 </script>
 
 <div class="flex flex-1">
-  <main class="bg-[#fffef9] flex-1 p-6 min-w-[1024px]">
-    <h2 class="text-2xl font-medium mb-6">{data.title}</h2>
+  <main class="bg-[var(--color-bg)] flex-1 p-6 min-w-[1024px]">
+    <h2 class="text-3xl font-medium mb-6">{data.title}</h2>
 
     {#if data.description}
       <Paragraph text={data.description} />
     {/if}
 
-    {#if data.looks}
-      <!-- Collection with looks -->
-      {#each data.looks as look}
+    {#if data.sections}
+      <!-- Collection with sections -->
+      {#each data.sections as section}
         <div class="mt-12">
-          <h3 class="text-xl font-medium mb-4">{look.subtitle}</h3>
+          <h3 class="text-2xl font-medium mb-4">{section.subtitle}</h3>
 
-          {#if look.description}
-            <Paragraph text={look.description} />
+          {#if section.description}
+            <Paragraph text={section.description} />
           {/if}
 
-          <ImageGallery images={look.images} basePath={look.basePath} />
+          <ImageGallery images={section.images} basePath={section.basePath} />
         </div>
       {/each}
     {:else}
-      <!-- Collection without looks -->
+      <!-- Collection without sections -->
       <ImageGallery images={data.images} basePath={data.basePath} />
     {/if}
   </main>

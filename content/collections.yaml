@@ -17,16 +17,22 @@ collections:
     items:
       - id: lcf-three
         title: "Draping the Light"
-        looks:
+        sections:
           - id: look-1
             subtitle: "Look 1 \"The Sculpture\""
           - id: look-2
             subtitle: "Look 2 \"The Shadow\""
           - id: look-3
             subtitle: "Look 3 \"The Light\""
-
+          - id: grad
+            subtitle: "Graduate Show"
   - id: fara-x-lcf
     title: "FARA X LCF"
 
   - id: end-of-the-world
     title: "End of the World"
+    sections:
+      - id: show
+        subtitle: "Show"
+      - id: bts
+        subtitle: "Behind The Scenes"
