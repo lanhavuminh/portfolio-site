@@ -7,7 +7,8 @@
 </script>
 
 <div class="flex flex-1">
-  <main class="bg-[var(--color-bg)] flex-1 p-6 min-w-[1024px]">
+  <main class="bg-[var(--color-bg)] flex-1 p-6 lg:min-w-[1024px]">
+    <div class="lg:hidden w-3/4 border-t border-[var(--color-text)] mb-6"></div>
     <h2 class="text-3xl font-medium mb-6">{data.title}</h2>
 
     {#if data.description}

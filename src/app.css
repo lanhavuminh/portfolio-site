@@ -21,5 +21,17 @@ body {
 	font-family: 'Bodoni 72 Smallcaps', 'Bodoni', bodoni, serif;
 	font-variant: small-caps;
 	font-weight: 400;
-	font-size: 80px;
+	font-size: 34px;
+}
+
+@media (orientation: landscape) and (max-width: 1023px) {
+	.lhvm {
+		font-size: 48px;
+	}
+}
+
+@media (min-width: 1024px) {
+	.lhvm {
+		font-size: 80px;
+	}
 }
