@@ -8,6 +8,15 @@ body {
 	color: var(--color-text);
 }
 
+.fade-in {
+	opacity: 0;
+	transition: opacity 0.9s ease;
+}
+
+.fade-in.loaded {
+	opacity: 1;
+}
+
 .lhvm {
 	font-family: 'Bodoni 72 Smallcaps', 'Bodoni', bodoni, serif;
 	font-variant: small-caps;

@@ -24,6 +24,7 @@ vite.config.ts.timestamp-*
 
 # Claude
 CLAUDE.md
+MOBILE.md
 
 # Files
 /static/media/_misc

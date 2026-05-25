@@ -24,7 +24,8 @@
           src="{basePath}/{image}"
           alt={image}
           loading="lazy"
-          class="w-full h-auto rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
+          class="fade-in w-full h-auto rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
+          onload={(e) => (e.currentTarget as HTMLElement).classList.add('loaded')}
         />
       {/if}
     </div>
