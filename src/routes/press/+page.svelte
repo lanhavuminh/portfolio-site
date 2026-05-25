@@ -6,7 +6,7 @@
 </script>
 
 <div class="flex flex-1">
-  <main class="bg-[var(--color-bg)] flex-1 p-6 min-w-[1024px]">
+  <main class="bg-[var(--color-bg)] flex-1 p-6 lg:min-w-[1024px]">
     <ImageGallery images={data.images} basePath={data.basePath} />
   </main>
 </div>

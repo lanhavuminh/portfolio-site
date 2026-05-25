@@ -7,7 +7,7 @@
   let { images, basePath }: Props = $props();
 </script>
 
-<div class="columns-3 gap-4">
+<div class="columns-3 gap-4 max-lg:portrait:columns-1">
   {#each images as image}
     <div class="mb-4 break-inside-avoid">
       {#if image.endsWith('.mp4')}

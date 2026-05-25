@@ -9,9 +9,9 @@
 </script>
 
 <div class="flex flex-1">
-	<main class="bg-[var(--color-bg)] flex-1 p-6 min-w-[1024px]">
-		<div class="flex items-center justify-center h-full gap-16">
-			<div class="flex-1 flex items-center justify-end">
+	<main class="bg-[var(--color-bg)] flex-1 p-6 lg:min-w-[1024px]">
+		<div class="flex items-center justify-center h-full gap-16 max-lg:portrait:flex-col max-lg:landscape:items-start">
+			<div class="flex-1 flex items-center justify-end max-lg:portrait:justify-center max-lg:portrait:order-2 max-lg:landscape:items-start max-lg:landscape:pt-2">
 				<div class="text-2xl max-w-lg space-y-6">
 					<p class="text-base italic">{data.contact.note}</p>
 					<div class="space-y-3">
@@ -53,8 +53,8 @@
 					</div>
 				</div>
 			</div>
-			<div class="flex-1">
-				<img src={data.contact.imageContact} alt="Lan Ha Vu Minh" class="fade-in max-w-md h-auto" onload={(e) => (e.currentTarget as HTMLElement).classList.add('loaded')} />
+			<div class="flex-1 max-lg:portrait:order-1 max-lg:landscape:shrink-0">
+				<img src={data.contact.imageContact} alt="Lan Ha Vu Minh" class="fade-in w-full h-auto lg:max-w-md max-lg:landscape:h-[calc(100vh-8rem)] max-lg:landscape:w-auto" onload={(e) => (e.currentTarget as HTMLElement).classList.add('loaded')} />
 			</div>
 		</div>
 	</main>

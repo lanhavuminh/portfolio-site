@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import { slide } from 'svelte/transition';
 	import type { Collection, CollectionItem, CollectionCategory } from '$lib/server/collections';
 
 	interface Props {
@@ -22,13 +23,13 @@
 	}
 </script>
 
-<aside class="w-64 bg-[var(--color-bg)] p-4 pt-10 pl-6">
-	<nav class="space-y-4">
-		<ul class="space-y-4">
+<aside class="w-full lg:w-64 bg-[var(--color-bg)] p-4 pt-6 max-lg:pt-3 lg:pt-10 max-lg:landscape:pl-0 lg:pl-6">
+	<nav class="space-y-4 max-lg:space-y-2">
+		<ul class="space-y-4 max-lg:space-y-2">
 			<li>
 				<button
-					onclick={() => (collectionsOpen = !collectionsOpen)}
-					class="nav-text flex w-full items-center justify-between text-left text-xl hover:text-gray-900"
+					onclick={() => { collectionsOpen = !collectionsOpen; if (collectionsOpen) specialProjectsOpen = false; }}
+					class="nav-text flex w-full items-center justify-between text-left max-lg:text-sm lg:text-xl hover:text-gray-900"
 				>
 					COLLECTIONS
 					<svg
@@ -42,14 +43,17 @@
 					</svg>
 				</button>
 				{#if collectionsOpen}
-					<ul class="mt-2 ml-4 space-y-1">
+					<ul class="mt-2 ml-4 space-y-1" transition:slide={{ duration: 150 }}>
 						{#each collections as collection}
 							{#if isCategory(collection)}
 								<li>
 									<button
-										onclick={() =>
-											(categoryStates[collection.category] = !categoryStates[collection.category])}
-										class="nav-text flex w-full items-center justify-between text-left text-base hover:text-gray-900"
+										onclick={() => {
+											const wasOpen = categoryStates[collection.category];
+											categoryStates = {};
+											if (!wasOpen) categoryStates[collection.category] = true;
+										}}
+										class="nav-text flex w-full items-center justify-between text-left max-lg:text-sm lg:text-base hover:text-gray-900"
 									>
 										{collection.category}
 										<svg
@@ -71,7 +75,7 @@
 										</svg>
 									</button>
 									{#if categoryStates[collection.category]}
-										<ul class="mt-1 ml-4 space-y-1">
+										<ul class="mt-1 ml-4 space-y-1" transition:slide={{ duration: 150 }}>
 											{#each collection.items as item}
 												<li>
 													<a
@@ -89,7 +93,7 @@
 								<li>
 									<a
 										href="/collections/{collection.id}"
-										class="nav-text block text-base {isActive('/collections/' + collection.id)
+										class="nav-text block max-lg:text-sm lg:text-base {isActive('/collections/' + collection.id)
 											? 'text-[var(--color-active)]'
 											: 'hover:text-gray-900'}">{collection.title}</a
 									>
@@ -101,8 +105,8 @@
 			</li>
 			<li>
 				<button
-					onclick={() => (specialProjectsOpen = !specialProjectsOpen)}
-					class="nav-text flex w-full items-center justify-between text-left text-xl hover:text-gray-900"
+					onclick={() => { specialProjectsOpen = !specialProjectsOpen; if (specialProjectsOpen) collectionsOpen = false; }}
+					class="nav-text flex w-full items-center justify-between text-left max-lg:text-sm lg:text-xl hover:text-gray-900"
 				>
 					SPECIAL PROJECTS
 					<svg
@@ -118,12 +122,12 @@
 					</svg>
 				</button>
 				{#if specialProjectsOpen}
-					<ul class="mt-2 ml-4 space-y-1">
+					<ul class="mt-2 ml-4 space-y-1" transition:slide={{ duration: 150 }}>
 						{#each specialProjects as project}
 							<li>
 								<a
 									href="/special-projects/{project.id}"
-									class="nav-text block text-base {isActive('/special-projects/' + project.id)
+									class="nav-text block max-lg:text-sm lg:text-base {isActive('/special-projects/' + project.id)
 										? 'text-[var(--color-active)]'
 										: 'hover:text-gray-900'}">{project.title}</a
 								>
@@ -135,7 +139,7 @@
 			<li>
 				<a
 					href="/press"
-					class="nav-text w-full text-left text-xl {isActive('/press')
+					class="nav-text w-full text-left max-lg:text-sm lg:text-xl {isActive('/press')
 						? 'text-[var(--color-active)]'
 						: 'hover:text-gray-900'} flex items-center justify-between">PRESS</a
 				>
@@ -143,7 +147,7 @@
 			<li>
 				<a
 					href="/about"
-					class="nav-text w-full text-left text-xl {isActive('/about')
+					class="nav-text w-full text-left max-lg:text-sm lg:text-xl {isActive('/about')
 						? 'text-[var(--color-active)]'
 						: 'hover:text-gray-900'} flex items-center justify-between">ABOUT</a
 				>
@@ -151,7 +155,7 @@
 			<li>
 				<a
 					href="/contact"
-					class="nav-text w-full text-left text-xl {isActive('/contact')
+					class="nav-text w-full text-left max-lg:text-sm lg:text-xl {isActive('/contact')
 						? 'text-[var(--color-active)]'
 						: 'hover:text-gray-900'} flex items-center justify-between">CONTACT</a
 				>
