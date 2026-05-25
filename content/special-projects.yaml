@@ -1,0 +1,11 @@
+special-projects:
+  - id: fara-x-lcf
+    title: "FARA X LCF"
+
+  - id: end-of-the-world
+    title: "End of the World"
+    sections:
+      - id: show
+        subtitle: "Show"
+      - id: bts
+        subtitle: "Behind The Scenes"

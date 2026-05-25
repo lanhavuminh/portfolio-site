@@ -14,7 +14,7 @@
 >
 	<Header></Header>
 	<div class="flex flex-1">
-  	<Sidebar collections={data.collections}></Sidebar>
+  	<Sidebar collections={data.collections} specialProjects={data.specialProjects}></Sidebar>
 		{@render children()}
 	</div>
 	<Footer instagram={data.contact.instagram} linkedin={data.contact.linkedin} ual={data.contact.ual}></Footer>

@@ -2,29 +2,29 @@ import { readFileSync, readdirSync } from 'fs';
 import yaml from 'js-yaml';
 import { join } from 'path';
 
-interface Section {
+export interface Section {
   id: string;
   subtitle: string;
 }
 
-interface CollectionItem {
+export interface CollectionItem {
   id: string;
   title: string;
   sections?: Section[];
 }
 
-interface CollectionCategory {
+export interface CollectionCategory {
   category: string;
   items: CollectionItem[];
 }
 
-type Collection = CollectionCategory | CollectionItem;
+export type Collection = CollectionCategory | CollectionItem;
 
 interface CollectionsData {
   collections: Collection[];
 }
 
-function isCategory(item: Collection): item is CollectionCategory {
+export function isCategory(item: Collection): item is CollectionCategory {
   return 'category' in item;
 }
 
@@ -57,14 +57,11 @@ interface SectionData {
   basePath: string;
 }
 
-export function loadCollectionPageData(id: string) {
-  const collection = findCollectionById(id);
-  if (!collection) {
-    throw new Error(`Collection ${id} not found`);
-  }
+export function loadPageData(item: CollectionItem, contentDir: string) {
+  const id = item.id;
 
   // Load main description
-  const descriptionFile = `collections/${id}.txt`;
+  const descriptionFile = `${contentDir}/${id}.txt`;
   let description = '';
   try {
     description = readFileSync(join('content', descriptionFile), 'utf-8').trim();
@@ -73,9 +70,9 @@ export function loadCollectionPageData(id: string) {
   }
 
   // Check if collection has sections
-  if (collection.sections && collection.sections.length > 0) {
-    const sections: SectionData[] = collection.sections.map(section => {
-      const sectionDescriptionFile = `collections/${id}/${section.id}.txt`;
+  if (item.sections && item.sections.length > 0) {
+    const sections: SectionData[] = item.sections.map(section => {
+      const sectionDescriptionFile = `${contentDir}/${id}/${section.id}.txt`;
       const sectionImagesPath = `/media/${id}/${section.id}`;
 
       // Load section description
@@ -107,7 +104,7 @@ export function loadCollectionPageData(id: string) {
     });
 
     return {
-      title: collection.title,
+      title: item.title,
       description,
       sections
     };
@@ -125,10 +122,19 @@ export function loadCollectionPageData(id: string) {
     }
 
     return {
-      title: collection.title,
+      title: item.title,
       description,
       images,
       basePath: imagesPath
     };
   }
+}
+
+export function loadCollectionPageData(id: string) {
+  const collection = findCollectionById(id);
+  if (!collection) {
+    throw new Error(`Collection ${id} not found`);
+  }
+
+  return loadPageData(collection, 'collections');
 }

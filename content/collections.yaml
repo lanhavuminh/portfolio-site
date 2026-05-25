@@ -1,17 +1,17 @@
 collections:
   - category: "LCF Year 1"
     items:
-      - id: lcf-one-ptct
-        title: "Product Technology, Creative Techniques"
-      - id: lcf-one-cpd
-        title: "Creative Product Development"
+      - id: lcf-one-p1
+        title: "Project 1"
+      - id: lcf-one-p2
+        title: "Project 2"
 
   - category: "LCF Year 2"
     items:
-      - id: lcf-two-ppi
-        title: "Professional Practice Initiation"
-      - id: lcf-two-isp
-        title: "Industry Specialised Project"
+      - id: lcf-two-p1
+        title: "Project 1"
+      - id: lcf-two-p2
+        title: "Project 2"
 
   - category: "LCF Year 3"
     items:
@@ -26,13 +26,3 @@ collections:
             subtitle: "Look 3 \"The Light\""
           - id: grad
             subtitle: "Graduate Show"
-  - id: fara-x-lcf
-    title: "FARA X LCF"
-
-  - id: end-of-the-world
-    title: "End of the World"
-    sections:
-      - id: show
-        subtitle: "Show"
-      - id: bts
-        subtitle: "Behind The Scenes"

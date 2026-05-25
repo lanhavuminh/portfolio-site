@@ -1,18 +1,16 @@
 @import 'tailwindcss';
 
 * {
-  font-family: didot, serif;
+	font-family: bodoni, serif;
 }
 
 body {
-  color: var(--color-text);
+	color: var(--color-text);
 }
 
 .lhvm {
-  font-family: bodoni, serif;
-  font-size: 50px;
-}
-
-.nav-text {
-  font-family: bodoni, serif;
+	font-family: 'Bodoni 72 Smallcaps', 'Bodoni', bodoni, serif;
+	font-variant: small-caps;
+	font-weight: 400;
+	font-size: 80px;
 }
