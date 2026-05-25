@@ -54,7 +54,7 @@
 				</div>
 			</div>
 			<div class="flex-1">
-				<img src={data.contact.imageContact} alt="Lan Ha Vu Minh" class="max-w-md h-auto" />
+				<img src={data.contact.imageContact} alt="Lan Ha Vu Minh" class="fade-in max-w-md h-auto" onload={(e) => (e.currentTarget as HTMLElement).classList.add('loaded')} />
 			</div>
 		</div>
 	</main>

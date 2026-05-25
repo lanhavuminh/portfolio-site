@@ -13,7 +13,7 @@
         </p>
       </div>
       <div class="flex-1">
-        <img src={data.contact.imageAbout} alt="Lan Ha Vu Minh" class="max-w-full max-h-[70vh] h-auto" />
+        <img src={data.contact.imageAbout} alt="Lan Ha Vu Minh" class="fade-in max-w-full max-h-[70vh] h-auto" onload={(e) => (e.currentTarget as HTMLElement).classList.add('loaded')} />
       </div>
     </div>
   </main>
